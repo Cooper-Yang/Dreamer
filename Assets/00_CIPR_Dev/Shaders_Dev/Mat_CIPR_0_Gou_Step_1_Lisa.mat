@@ -33,8 +33,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineWidth0: 10.72
-    - _OutlineWidth1: 4
+    - _OutlineWidth0: 12.1
+    - _OutlineWidth1: 7.2
     m_Colors:
     - _DistanceCtrl: {r: 0.38, g: 0.84, b: 3.82, a: 0.77}
     - _InlineControl: {r: 0.25, g: 0.11, b: 1, a: -0.19}
