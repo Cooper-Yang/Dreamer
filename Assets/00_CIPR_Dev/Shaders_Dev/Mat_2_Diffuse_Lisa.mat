@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mat_2_Diffuse_Lisa
+  m_Shader: {fileID: 4800000, guid: 6e591d09c61e65445ab6d2c6964cf3dc, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ColorRemap:
+        m_Texture: {fileID: 2800000, guid: 657dbb39908f9314f924fba792568e49, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatCap:
+        m_Texture: {fileID: 2800000, guid: 19d5b45ad2ace464dad2c2a563d79dde, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: d9718860e0993984abd5ad38a76e5b35, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OutlineNoiseColor:
+        m_Texture: {fileID: 2800000, guid: 7644ef689de240c46acfa1941a787211, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OutlineNoiseFB:
+        m_Texture: {fileID: 2800000, guid: 84733ebb174d8eb4eaa9d0b09d3e39f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Stroke:
+        m_Texture: {fileID: 2800000, guid: 69fee2a7edb3a7643aaaad904a0ad6fd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _LambertRim: 0.471
+    m_Colors:
+    - _AreaBegin: {r: 0.51, g: 0.1, b: -0.09, a: 5.15}
+    - _AreaEnd: {r: 0.91, g: 0.7, b: 0.76, a: 1.68}
+    - _Dark: {r: 1.97, g: 2, b: 0.79, a: 2.5}
+    - _DistanceCtrl: {r: 71.77, g: 0.49, b: 2.03, a: 1.6}
+    - _InlineControl: {r: 0.67, g: 0.34, b: 4.87, a: 0.33}
+    - _OutlineColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
+    - _OutlineColorRand: {r: 200, g: 8.9, b: 1, a: 1}
+    - _OutlineCtrl: {r: 12, g: 2.5, b: 4, a: 0.25}
+    - _OutlineNoiseCtrl: {r: 2.99, g: 6.73, b: 10.21, a: 5}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Size: {r: 7.5, g: 9.03, b: 50, a: 10}
+  m_BuildTextureStacks: []
