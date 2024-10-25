@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mat_CIPR_0_Gou_Step_0_Sa
+  m_Shader: {fileID: 4800000, guid: 757119fab2f7bdb42af0b9a35658c553, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _OutlineNoiseFB:
+        m_Texture: {fileID: 2800000, guid: 84733ebb174d8eb4eaa9d0b09d3e39f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _OutlineWidth0: 6.39
+    - _OutlineWidth1: 4
+    - _RimRate: 0.77
+    m_Colors:
+    - _InlineControl: {r: 0.38, g: 0.84, b: 3.82, a: 0.5}
+    - _OutlineColor: {r: 0.049999982, g: 0.049999982, b: 0.049999982, a: 1}
+    - _OutlineNoiseCtrl: {r: 1.67, g: 1.76, b: 1, a: 5}
+    - _RimColor: {r: 0.9098039, g: 0.90588236, b: 0.8980392, a: 1}
+  m_BuildTextureStacks: []
