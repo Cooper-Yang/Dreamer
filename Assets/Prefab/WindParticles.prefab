@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windClip: {fileID: 8300000, guid: b0157ce9ad2a6bc438c185b184a41fec, type: 3}
   fadeDuration: 1
+  rumbleIntensity: 0.3
 --- !u!1 &1683969899784376636
 GameObject:
   m_ObjectHideFlags: 0

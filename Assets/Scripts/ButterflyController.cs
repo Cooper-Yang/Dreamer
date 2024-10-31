@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Cinemachine;
+using System.Collections;
 
 public class ButterflyController : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class ButterflyController : MonoBehaviour
     public float airStaminaRegenRate = 10f; // Stamina regeneration rate per second
     public float groundStaminaRegenRate = 20f; // Stamina regeneration rate per second when on the ground
     public float staminaCostPerFlap = 20f; // Stamina cost per flap
+    [Header("Rumble Settings")]
+    public float rumbleIntensity = 0.5f; // Intensity of the gamepad rumble
+    public float rumbleDuration = 0.2f; // Duration of the gamepad rumble
 
     private Rigidbody rb;
     private Vector2 movementInput;
@@ -28,6 +32,7 @@ public class ButterflyController : MonoBehaviour
     private float lastFlapTime;
     private float currentStamina;
     private bool bgmStarted = false; // Flag to track if BGM has started
+    private bool wasGrounded = true; // Track if the player was previously grounded
 
     private InputAction movementAction;
     private InputAction ascendAction;
@@ -73,11 +78,12 @@ public class ButterflyController : MonoBehaviour
         HandleCamera();
         RegenerateStamina();
         UpdateStaminaUI();
+        CheckLanding();
     }
 
     bool checkIfGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        return Physics.Raycast(transform.position, Vector3.down, 0.4f);
     }
 
     void HandleMovement()
@@ -113,6 +119,9 @@ public class ButterflyController : MonoBehaviour
             lastFlapTime = Time.time; // Reset the cooldown timer
             currentStamina -= staminaCostPerFlap; // Decrease stamina
             AudioManager.Instance.PlayRandomSFX(0, 1, 0.9f, 1.1f);
+
+            // Rumble the gamepad
+            StartCoroutine(RumbleGamepad(rumbleIntensity, rumbleDuration));
         }
         else if (descendAction.IsPressed())
         {
@@ -212,5 +221,30 @@ public class ButterflyController : MonoBehaviour
     {
         // Play the first BGM clip in a loop
         AudioManager.Instance.PlayAudio(AudioType.BGM, 0, true);
+    }
+
+    void CheckLanding()
+    {
+        bool isGrounded = checkIfGrounded();
+
+        // Check if the player has just landed
+        if (isGrounded && !wasGrounded)
+        {
+            // Rumble the gamepad on landing
+            StartCoroutine(RumbleGamepad(rumbleIntensity, rumbleDuration));
+        }
+
+        // Update the wasGrounded flag
+        wasGrounded = isGrounded;
+    }
+
+    IEnumerator RumbleGamepad(float intensity, float duration)
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(intensity, intensity);
+            yield return new WaitForSeconds(duration);
+            Gamepad.current.SetMotorSpeeds(0, 0);
+        }
     }
 }

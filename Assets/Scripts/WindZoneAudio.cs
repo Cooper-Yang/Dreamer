@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WindZoneAudio : MonoBehaviour
 {
     public AudioClip windClip; // The wind sound effect
     public float fadeDuration = 1.0f; // Duration for fading in and out the wind sound
+    public float rumbleIntensity = 0.5f; // Intensity of the gamepad rumble
 
     private AudioSource windSource;
     private Coroutine fadeCoroutine;
@@ -30,6 +32,9 @@ public class WindZoneAudio : MonoBehaviour
 
             // Start fading in the wind sound
             fadeCoroutine = StartCoroutine(FadeInWindSound());
+
+            // Start gamepad rumble
+            StartGamepadRumble();
         }
     }
 
@@ -42,6 +47,9 @@ public class WindZoneAudio : MonoBehaviour
             {
                 windSource.Play();
             }
+
+            // Maintain gamepad rumble
+            MaintainGamepadRumble();
         }
     }
 
@@ -57,6 +65,9 @@ public class WindZoneAudio : MonoBehaviour
 
             // Start fading out the wind sound
             fadeCoroutine = StartCoroutine(FadeOutWindSound());
+
+            // Stop gamepad rumble
+            StopGamepadRumble();
         }
     }
 
@@ -86,5 +97,29 @@ public class WindZoneAudio : MonoBehaviour
 
         windSource.Stop();
         windSource.volume = startVolume; // Reset volume for next time
+    }
+
+    void StartGamepadRumble()
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(1, 1);
+        }
+    }
+
+    void MaintainGamepadRumble()
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(rumbleIntensity, rumbleIntensity);
+        }
+    }
+
+    void StopGamepadRumble()
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0, 0);
+        }
     }
 }
