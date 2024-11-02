@@ -1,0 +1,21 @@
+newmtl ProBuilderDefault
+map_Kd -o 0 0 -s 1 1 GridBox_Default.png
+Kd 1 1 1
+d 1
+
+newmtl Mat_1_Gou_Step_0_Lisa
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Mat_1_Gou_Step_2_Lisa
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Mat_1_Gou_Step_1_Lisa
+Kd 1.0 1.0 1.0
+d 1.0
+
+newmtl Glass
+Kd 0.8867924 0.8867924 0.8867924
+d 0.5372549
+
