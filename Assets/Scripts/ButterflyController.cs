@@ -33,6 +33,7 @@ public class ButterflyController : MonoBehaviour
     private float currentStamina;
     private bool bgmStarted = false; // Flag to track if BGM has started
     private bool wasGrounded = true; // Track if the player was previously grounded
+    private bool isAscending = false; // Track if the player is ascending
 
     private InputAction movementAction;
     private InputAction ascendAction;
@@ -96,8 +97,6 @@ public class ButterflyController : MonoBehaviour
             // Get movement input (forward/backward and strafing)
             movementInput = movementAction.ReadValue<Vector2>();
 
-
-
             // Move forward/backward and strafe left/right
             Vector3 forwardMovement = transform.forward * movementInput.y * flightSpeed * Time.deltaTime;
             Vector3 strafeMovement = transform.right * movementInput.x * strafeSpeed * Time.deltaTime;
@@ -110,7 +109,7 @@ public class ButterflyController : MonoBehaviour
         if (ascendAction.WasPressedThisFrame() && Time.time >= lastFlapTime + flapCooldown && currentStamina >= staminaCostPerFlap)
         {
             // Start playing BGM on first movement input
-            if (!bgmStarted )
+            if (!bgmStarted)
             {
                 StartBGM();
                 bgmStarted = true;
@@ -124,10 +123,23 @@ public class ButterflyController : MonoBehaviour
 
             // Rumble the gamepad
             StartCoroutine(RumbleGamepad(rumbleIntensity, rumbleDuration));
+
+            // Set ascending state
+            //isAscending = true;
         }
         else if (descendAction.IsPressed())
         {
-            rb.velocity = new Vector3(rb.velocity.x, -ascentSpeed, rb.velocity.z);
+            // rb.velocity = new Vector3(rb.velocity.x, -ascentSpeed, rb.velocity.z);
+            //isAscending = false;
+        }
+        else
+        {
+            //isAscending = false;
+        }
+        if(rb.velocity.y >0){
+            isAscending = true;
+        }else if(rb.velocity.y <0){
+            isAscending = false;
         }
     }
 
@@ -140,7 +152,7 @@ public class ButterflyController : MonoBehaviour
         if (!isGrounded)
         {
             // Yaw rotation (left/right)
-            float yaw = lookInput.x * turnSpeed * Time.deltaTime;
+            float yaw = 0; //lookInput.x * turnSpeed * Time.deltaTime;
 
             // Add strafing input to yaw rotation
             yaw += movementInput.x * turnSpeed * Time.deltaTime;
@@ -248,5 +260,25 @@ public class ButterflyController : MonoBehaviour
             yield return new WaitForSeconds(duration);
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
+    }
+
+    // Implement the required methods for AnimationStateController
+    public Vector2 GetMovementInput()
+    {
+        return movementInput;
+    }
+
+    public bool NoInput(){
+        return movementInput == Vector2.zero;
+    }
+
+    public bool IsGrounded()
+    {
+        return checkIfGrounded();
+    }
+
+    public bool IsAscending()
+    {
+        return isAscending;
     }
 }
