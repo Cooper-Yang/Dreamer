@@ -129,7 +129,7 @@ public class ButterflyController : MonoBehaviour
         }
         else if (descendAction.IsPressed())
         {
-            rb.velocity = new Vector3(rb.velocity.x, -ascentSpeed, rb.velocity.z);
+            // rb.velocity = new Vector3(rb.velocity.x, -ascentSpeed, rb.velocity.z);
             //isAscending = false;
         }
         else
@@ -152,7 +152,7 @@ public class ButterflyController : MonoBehaviour
         if (!isGrounded)
         {
             // Yaw rotation (left/right)
-            float yaw = lookInput.x * turnSpeed * Time.deltaTime;
+            float yaw = 0; //lookInput.x * turnSpeed * Time.deltaTime;
 
             // Add strafing input to yaw rotation
             yaw += movementInput.x * turnSpeed * Time.deltaTime;
