@@ -96,12 +96,7 @@ public class ButterflyController : MonoBehaviour
             // Get movement input (forward/backward and strafing)
             movementInput = movementAction.ReadValue<Vector2>();
 
-            // Start playing BGM on first movement input
-            if (!bgmStarted && movementInput != Vector2.zero)
-            {
-                StartBGM();
-                bgmStarted = true;
-            }
+
 
             // Move forward/backward and strafe left/right
             Vector3 forwardMovement = transform.forward * movementInput.y * flightSpeed * Time.deltaTime;
@@ -114,6 +109,13 @@ public class ButterflyController : MonoBehaviour
         // Ascend or Descend
         if (ascendAction.WasPressedThisFrame() && Time.time >= lastFlapTime + flapCooldown && currentStamina >= staminaCostPerFlap)
         {
+            // Start playing BGM on first movement input
+            if (!bgmStarted )
+            {
+                StartBGM();
+                bgmStarted = true;
+            }
+
             // Apply an upward impulse force to imitate a "flap"
             rb.AddForce(Vector3.up * ascentSpeed, ForceMode.Impulse);
             lastFlapTime = Time.time; // Reset the cooldown timer
